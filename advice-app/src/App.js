@@ -15,7 +15,7 @@ function App() {
 
  
   const fetchInfo = () => {
-   
+ 
     return fetch(url_api)
       .then((res) => res.json())
       .then((data) => {
@@ -28,48 +28,59 @@ function App() {
   };
 
   useEffect(() => {
-    fetchInfo();
-    // searchAdvice();
+     fetchInfo();
+    //searchAdvice();
   }, []);
 
-  const changeHandler = (e) => {
-    setQuery(e.target.value);
-  };
+  
+  const check = (e)=> {
+    setQuery(e.target.value)};
 
-  const searchAdvice = async(e) => {
+  const searchAdvice = (e) => {
     e.preventDefault();
-    try{
     
-      const url = "https://api.adviceslip.com/advice/search/";
-      const res = await fetch(url + `${ query }`);
-      const data = await res.json();
-      if(data.slip) {
-        setData(data.slip.advice);
-      }
-      else{
-        setData('No advice found')
-      }
-     
-    }
-    
-    catch(e) {
-      console.log(e);
+    console.log("Query before fetch", query);
 
-   }
-  }
+    fetch(`https://api.adviceslip.com/advice/search/${query}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('data from API:', data);
+      
+      if(data.slips) {
+        const adviceslips = data.slips.map((slip) => slip.advice);
+        if(adviceslips.length > 0){
+          
+          let arr = [];
+          arr.push(adviceslips);
+          setData(arr);
+        }
+        
+        // data.map(slip) => {
+        //   slip = slips.advice;
+        //   setData(slip)
+        // }
+        
+    
+      } else {
+        setData('No advice slips found ')
+      }
+    })
+    .catch((error)  => {
+      console.error("fetch error", error)
+    })
+  };
   
   let randomColor = Math.floor(Math.random() * 16777215).toString(16);
- 
 
   return (
     <div className="App col-xs-12 col-sm-12 col-md-12 col-xl-12">
       <h1>Advice</h1>
       <div className='body'>
-        <Form onSubmit={searchAdvice}>
+        <Form onSubmit={searchAdvice} >
           <FormControl
-            type="search"
+            type="text"
             placeholder="Search advice"
-            onChange={changeHandler}
+            onChange={check}
             value={query}
           />
           <Button variant="secondary" onClick={searchAdvice} type="submit">
