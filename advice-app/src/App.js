@@ -10,9 +10,17 @@ function App() {
   
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
-  
+  const [image, setImage] = useState('');
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
   
 
+  // to show the advice slip on click
+  const onClick = () => showSlip(true)
+  const showSlip = () => {
+   
+      setImage('https://api.adviceslip.com/advice/65/img/m');
+ 
+  }
  
   const fetchInfo = () => {
  
@@ -34,33 +42,24 @@ function App() {
 
   
   const check = (e)=> {
-    setQuery(e.target.value)};
+    setQuery(e.target.value)
+  };
+
+  
 
   const searchAdvice = (e) => {
     e.preventDefault();
-    
-    console.log("Query before fetch", query);
-
     fetch(`https://api.adviceslip.com/advice/search/${query}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log('data from API:', data);
-      
       if(data.slips) {
         const adviceslips = data.slips.map((slip) => slip.advice);
-        if(adviceslips.length > 0){
-          
-          let arr = [];
+        if(adviceslips.length > 0){ 
+          const arr = [];
           arr.push(adviceslips);
           setData(arr);
+          // setData(adviceslips)
         }
-        
-        // data.map(slip) => {
-        //   slip = slips.advice;
-        //   setData(slip)
-        // }
-        
-    
       } else {
         setData('No advice slips found ')
       }
@@ -70,11 +69,14 @@ function App() {
     })
   };
   
-  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  
 
   return (
     <div className="App col-xs-12 col-sm-12 col-md-12 col-xl-12">
-      <h1>Advice</h1>
+      <h1>Advice</h1> 
+      <Button onClick={onClick}>
+        print Daily slip
+      </Button>
       <div className='body'>
         <Form onSubmit={searchAdvice} >
           <FormControl
@@ -90,13 +92,26 @@ function App() {
         </Form>
       </div>
       <div className='content' >
+      <ul>
+        {/* {data.map((advice, index) => (
+          <li key={index}>{advice}</li>
+        ))} */}
+      </ul>
         <h2 style={{backgroundColor: "#" + `${randomColor}`, }}>{data}</h2>
-        <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}}>
+        <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}} onClick={fetchInfo}>
           <DiceLogo className='diceLogo' onClick={fetchInfo} />
         </div>
         
-      </div>
+        <img 
+          src = {image}
+          
+          className='img-fluid.max-width:100% slipimage'
 
+        />
+      </div>
+      <div>
+        
+      </div>
       
       
     </div>
