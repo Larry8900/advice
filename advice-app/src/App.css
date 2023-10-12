@@ -32,6 +32,9 @@ h2{
   padding: 70px;
   max-width: 100vh;
 }
+.search{
+  margin: 10px;
+}
 .logo-div{
   padding:20px;
   align-items: center;
@@ -58,6 +61,31 @@ h2{
   display:inline-block;
   align-content: center;
 
+}
+.prees-div{
+  padding:5px;
+  align-items: center;
+  background-color: rgb(139, 201, 139);
+  border-radius:50%;
+  width:fit-content ;
+  height:fit-content;
+  position: relative;
+  top: -35px;
+  margin: auto;
+  border: 5px solid rgb(230, 196, 196);
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+
+}
+p{
+  position: relative;
+  padding: 10px;
+  max-width:fit-content;
+  border-radius: 20px;
+  font-size: 14px;
+  float: left;
+  margin: auto ;
+  top: -20%;
 }
 .slipimage{
   position: relative;

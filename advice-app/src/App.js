@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { FormControl, Form, Button, } from 'react-bootstrap'; // Import Button from 'react-bootstrap'
+import { FormControl, Form, Button, Nav } from 'react-bootstrap'; // Import Button from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ReactComponent as DiceLogo} from './icon-dice.svg';
 
@@ -40,7 +40,18 @@ function App() {
     //searchAdvice();
   }, []);
 
-  
+  const fetchBadAdvice = (e) => {
+     e.preventDefault();
+     return fetch("https://badadvice.vercel.app/api/count=5")
+     .then((res) => res.json())
+     .then((data) => {
+      setData(data.advice);
+    
+  })
+  .catch((error) => {
+    console.log("feth erro", error);
+  })
+}
   const check = (e)=> {
     setQuery(e.target.value)
   };
@@ -73,10 +84,15 @@ function App() {
 
   return (
     <div className="App col-xs-12 col-sm-12 col-md-12 col-xl-12">
-      <h1>Advice</h1> 
-      <Button onClick={onClick}>
-        print Daily slip
-      </Button>
+    
+    <h1>Best Advice</h1> 
+      
+      
+      {/* <Button onClick={fetchBadAdvice}>
+      Fetch Bad Advice
+      </Button> */}
+   
+      
       <div className='body'>
         <Form onSubmit={searchAdvice} >
           <FormControl
@@ -84,10 +100,14 @@ function App() {
             placeholder="Search advice"
             onChange={check}
             value={query}
+            className='search'
           />
           <Button variant="secondary" onClick={searchAdvice} type="submit">
             Search
           </Button>
+          <Button onClick={onClick}>
+        print Daily slip
+      </Button>
           
         </Form>
       </div>
@@ -101,6 +121,10 @@ function App() {
         <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}} onClick={fetchInfo}>
           <DiceLogo className='diceLogo' onClick={fetchInfo} />
         </div>
+       
+        <p style={{backgroundColor: "#" + `${randomColor}`, }}>Press the dice to get new advice</p>
+     
+        
         
         <img 
           src = {image}
