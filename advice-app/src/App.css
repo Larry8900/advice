@@ -24,7 +24,7 @@
  text-align: center;
 }
 
-h2{
+.text-center{
   color: white;
   padding-top: 15vh;
   background-color: rgba(61, 59, 59, 0.9) ;
@@ -62,30 +62,12 @@ h2{
   align-content: center;
 
 }
-.prees-div{
-  padding:5px;
-  align-items: center;
-  background-color: rgb(139, 201, 139);
-  border-radius:50%;
-  width:fit-content ;
-  height:fit-content;
-  position: relative;
-  top: -35px;
-  margin: auto;
-  border: 5px solid rgb(230, 196, 196);
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
 
-}
 p{
   position: relative;
-  padding: 10px;
-  max-width:fit-content;
-  border-radius: 20px;
-  font-size: 14px;
+  font-size: 13px;
   float: left;
-  margin: auto ;
-  top: -20%;
+  color: rgba(168, 164, 164, 0.9);
 }
 .slipimage{
   position: relative;

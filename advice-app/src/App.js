@@ -105,27 +105,23 @@ function App() {
           <Button variant="secondary" onClick={searchAdvice} type="submit">
             Search
           </Button>
-          <Button onClick={onClick}>
-        print Daily slip
-      </Button>
+          
           
         </Form>
       </div>
       <div className='content' >
-      <ul>
-        {/* {data.map((advice, index) => (
-          <li key={index}>{advice}</li>
-        ))} */}
-      </ul>
-        <h2 style={{backgroundColor: "#" + `${randomColor}`, }}>{data}</h2>
-        <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}} onClick={fetchInfo}>
-          <DiceLogo className='diceLogo' onClick={fetchInfo} />
+        <div className='text-center' style={{backgroundColor: "#" + `${randomColor}`, }}>
+        <h2 >{data}</h2>
+          <p style={{backgroundColor: "#" + `${randomColor}`, }}>Press the dice to get new advice</p>
+      
         </div>
-       
-        <p style={{backgroundColor: "#" + `${randomColor}`, }}>Press the dice to get new advice</p>
-     
         
-        
+        <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}} onClick={fetchInfo}>
+            <DiceLogo className='diceLogo' onClick={fetchInfo} />
+        </div>
+          <Button onClick={onClick} className='print'>
+          print Daily slip
+          </Button>
         <img 
           src = {image}
           
@@ -133,9 +129,7 @@ function App() {
 
         />
       </div>
-      <div>
-        
-      </div>
+      
       
       
     </div>
