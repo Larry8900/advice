@@ -85,7 +85,7 @@ function App() {
   return (
     <div className="App col-xs-12 col-sm-12 col-md-12 col-xl-12">
     
-    <h1>Best Advice</h1> 
+    <h1 className='head'>Best Advice</h1> 
       
       
       {/* <Button onClick={fetchBadAdvice}>
@@ -100,9 +100,9 @@ function App() {
             placeholder="Search advice"
             onChange={check}
             value={query}
-            className='search'
+            
           />
-          <Button variant="secondary" onClick={searchAdvice} type="submit">
+          <Button className='pick' variant="secondary" onClick={searchAdvice} type="submit">
             Search
           </Button>
           
@@ -119,7 +119,7 @@ function App() {
         <div className='logo-div' style={{backgroundColor: "#" + `${randomColor}`}} onClick={fetchInfo}>
             <DiceLogo className='diceLogo' onClick={fetchInfo} />
         </div>
-          <Button onClick={onClick} className='print'>
+          <Button variant="secondary" style={{backgroundColor: "#" + `${randomColor}`, }} onClick={onClick} className='print'>
           print Daily slip
           </Button>
         <img 

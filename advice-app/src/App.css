@@ -23,6 +23,16 @@
  background-size: cover;
  text-align: center;
 }
+.head{
+  color:black;
+}
+Form{
+  display: inline-flex;
+  width: fit-content;
+  position: relative;
+  margin: 20px;
+
+}
 
 .text-center{
   color: white;
@@ -67,7 +77,14 @@ p{
   position: relative;
   font-size: 13px;
   float: left;
-  color: rgba(168, 164, 164, 0.9);
+  color: rgb(37, 37, 37);
+}
+.print{
+  position:relative;
+  display: block;
+  float: left;
+  top: -20%;
+  border:0px solid red
 }
 .slipimage{
   position: relative;
