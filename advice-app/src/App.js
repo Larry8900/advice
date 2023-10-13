@@ -126,7 +126,6 @@ function App() {
           src = {image}
           
           className='img-fluid.max-width:100% slipimage'
-
         />
       </div>
       
