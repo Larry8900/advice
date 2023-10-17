@@ -122,7 +122,7 @@ function App() {
           <Button variant="secondary" style={{backgroundColor: "#" + `${randomColor}`, }} onClick={onClick} className='print'>
           print Daily slip
           </Button>
-        <img 
+        <img
           src = {image}
           
           className='img-fluid.max-width:100% slipimage'
